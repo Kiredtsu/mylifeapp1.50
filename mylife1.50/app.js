@@ -541,7 +541,7 @@ async function applySession(user) {
 
 async function configureSupabase() {
   try {
-    const response = await fetch("/api/config");
+    const response = await fetch("./api/config");
     if (!response.ok) return;
     const config = await response.json();
     if (!config.supabaseUrl || !config.supabaseAnonKey) return;
@@ -1882,7 +1882,7 @@ function renderSettings() {
           const { data, error } = await supabase.auth.getSession();
           if (error) throw error;
           if (!data.session) throw new Error("Sua sessão expirou. Entre novamente.");
-          const response = await fetch("/api/assistant", {
+          const response = await fetch("./api/assistant", {
             method: "POST",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${data.session.access_token}` },
             body: JSON.stringify({ message })
@@ -1942,7 +1942,7 @@ function renderSettings() {
       applyTheme();
       render();
       if ("serviceWorker" in navigator && location.protocol !== "file:") {
-        navigator.serviceWorker.register("/sw.js").catch(error => console.error("Não foi possível ativar o modo PWA.", error));
+        navigator.serviceWorker.register("./sw.js").catch(error => console.error("Não foi possível ativar o modo PWA.", error));
       }
       clearInterval(reminderTimer);
       reminderTimer = setInterval(checkReminders, 60 * 1000);
@@ -1957,7 +1957,7 @@ function deliverReminder(key, title, body) {
   const storageKey = `mylife-notified:${key}`;
   try {
     if (sessionStorage.getItem(storageKey)) return;
-    new Notification(title, { body, icon: "/icon-180.png" });
+    new Notification(title, { body, icon: new URL("./icon-180.png", document.baseURI).href });
     sessionStorage.setItem(storageKey, "1");
   } catch (error) {
     console.warn("Não foi possível exibir o lembrete.", error);

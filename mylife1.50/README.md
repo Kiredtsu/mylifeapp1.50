@@ -18,6 +18,8 @@ O carregamento automático de `.env` requer Node.js 20.6 ou superior. Com Node.j
 
 Abra `http://localhost:3000`. Sem configuração de nuvem, as funcionalidades locais continuam disponíveis e ficam salvas no navegador. A interface funciona offline depois de carregada; a sincronização Supabase e o assistente precisam de internet.
 
+O GitHub Pages pode hospedar apenas os arquivos estáticos da interface; ele não executa `server.js`. Nesse caso, o modo local pode funcionar, mas login/sincronização e assistente de IA precisam do backend Node.js publicado em um serviço como Render.
+
 ## Supabase
 
 1. Crie um projeto Supabase e execute [`supabase/schema.sql`](supabase/schema.sql) no SQL Editor. Isso cria uma linha privada por conta autenticada em `mylife_data`; o `user_id` está ligado a `auth.users` e o RLS impede que uma conta leia ou altere os dados de outra.
