@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050706">
+  <meta name="description" content="Um espaço tranquilo para organizar seus dias, cuidar de você e registrar o que importa.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MyLife">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <title>MyLife — seu espaço, no seu ritmo</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="menu-button" type="button" id="menu-button" aria-expanded="false" aria-controls="side-menu" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="brand" href="#inicio" data-page="inicio" aria-label="MyLife — início"><span id="app-name">MyLife</span></a>
+      <div class="topbar-actions">
+        <span id="sync-indicator" class="sync-indicator"><span class="sync-dot"></span><span id="sync-label">Salvo neste aparelho</span></span>
+      </div>
+    </header>
+
+    <div class="menu-backdrop" id="menu-backdrop" hidden></div>
+    <nav class="side-menu" id="side-menu" aria-label="Menu principal" hidden>
+      <div class="side-menu-heading"><span>MyLife</span><button type="button" id="close-menu" aria-label="Fechar menu">×</button></div>
+      <button type="button" data-page="inicio">Início</button>
+      <button type="button" data-page="financas">Controle financeiro</button>
+      <button type="button" data-page="compromissos">Compromissos</button>
+      <button type="button" data-page="calendario">Calendário</button>
+      <button type="button" data-page="tarefas">Tarefas</button>
+      <button type="button" data-page="metas">Metas pessoais</button>
+      <button type="button" data-page="contas-pagar">Contas a pagar</button>
+      <button type="button" data-page="contas-receber">Contas a receber</button>
+      <button type="button" data-page="compras">Lista de compras</button>
+      <button type="button" data-page="anotacoes">Anotações</button>
+      <button type="button" data-page="relatorios">Relatórios</button>
+      <button type="button" data-page="cofrinhos">Meus Cofrinhos</button>
+      <button type="button" data-page="assinaturas">Minhas Assinaturas</button>
+      <button type="button" data-page="habitos">Meus Hábitos</button>
+      <button type="button" data-page="meu-dia">Meu Dia</button>
+      <button type="button" data-page="orcamento">Orçamento Mensal</button>
+      <button type="button" data-page="diario">Diário</button>
+      <button type="button" data-page="assistente">Assistente IA</button>
+      <button type="button" data-page="configuracoes">Configurações</button>
+      <button type="button" data-page="conta">Conta e sincronização</button>
+    </nav>
+
+    <main id="app" class="main-content" aria-live="polite"></main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button class="nav-item active" type="button" data-page="inicio" aria-current="page">
+        <span class="nav-icon" aria-hidden="true">⌂</span><span>Início</span>
+      </button>
+      <button class="nav-item" type="button" data-page="assistente">
+        <span class="nav-icon nav-icon-spark" aria-hidden="true">✳</span><span>Assistente</span>
+      </button>
+      <button class="nav-item" type="button" data-page="tarefas">
+        <span class="nav-icon" aria-hidden="true">☑</span><span>Tarefas</span>
+      </button>
+      <button class="nav-item" type="button" data-page="configuracoes">
+        <span class="nav-icon" aria-hidden="true">⚙</span><span>Configurações</span>
+      </button>
+    </nav>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <input id="import-file" type="file" accept="application/json,.json" hidden>
+  </div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
